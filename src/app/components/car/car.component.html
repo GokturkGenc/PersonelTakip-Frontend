@@ -1,0 +1,69 @@
+<div class="row">
+  <div class="col-md-2">
+    <app-side-bar></app-side-bar>
+  </div>
+  <div class="col-md-10">
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Find a vehicle</label>
+      <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
+        placeholder="Type the vehicle you want to find" />
+    </div>
+
+    <div *ngIf="filterText" class="alert alert-primary">
+      Searched for {{ filterText }}.
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <select [(ngModel)]="brandFilter" class="form-select" aria-label="marka seç">
+          <option value="0">Marka seç</option>
+          <option [value]="brand.brandId" *ngFor="let brand of brands">{{brand.brandName}}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
+          <option value="0">Renk seç</option>
+          <option [value]="color.colorId" *ngFor="let color of colors">{{color.colorName}}</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <div *ngIf="colorFilter&&brandFilter"><button routerLink="/cars/color/{{colorFilter}}/brand/{{brandFilter}}"
+            style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-outline-dark btn-primary"
+            type="button"> Filter</button></div>
+        <div *ngIf="!colorFilter&&brandFilter"><button routerLink="/cars/brand/{{brandFilter}}"
+            style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-outline-dark btn-primary"
+            type="button"> Filter </button></div>
+        <div *ngIf="colorFilter&&!brandFilter"><button routerLink="/cars/color/{{colorFilter}}"
+            style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-outline-dark btn-primary"
+            type="button"> Filter </button></div>
+
+      </div>
+    </div>
+
+    <div class="row" style="margin-left:1px; margin-right:1px;">
+      <div class="card" style="width: 32.33%; margin-left: 1%; margin-bottom: 1%"
+        *ngFor="let car of cars | filterPipe: filterText">
+        <img *ngIf="car.imagePath" [src]="imageUrl + car.imagePath" class="card-img-top" style="object-fit: cover"
+          width="100" height="50%" alt="..." />
+
+        <img *ngIf="!car.imagePath" [src]="imageUrl + 'defaultimage.png'" class="card-img-top" style="object-fit: cover"
+          width="100" height="50%" alt="..." />
+
+        <div class="card-body">
+          <h5 class="card-title" style="font-size: 15pt;">{{ car.brandName | uppercase }}</h5>
+          <p class="card-text">
+            {{ car.colorName }} {{ car.modelYear }} {{ car.description }}
+          </p>
+          <p>{{ car.dailyPrice }}</p>
+          <p>{{ car.dailyPrice | vatAdded: 18 | currency }} with taxes!</p>
+          <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 10%">
+            <button type="button" routerLink="/cars/car/{{ car.carId }}" class="btn btn-primary">
+              İncele
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

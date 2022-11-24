@@ -1,0 +1,38 @@
+<ul class="list-group" *ngFor="let color of colors">
+  <li
+    (click)="setCurrentColor(color)"
+    routerLink="/cars/color/{{ color.colorId }}"
+    [class]="getCurrentColorClass(color)"
+    type="button"
+  >
+    <a>{{ color.colorName }}</a>
+  </li>
+</ul>
+<h5 *ngIf="currentColor">{{ currentColor.colorName }} seçtiniz</h5>
+
+<!-- 
+  <ul class="list-group">
+  <a class="btn btn-primary" data-bs-toggle="collapse" href="#colorCollapse" role="button" aria-expanded="false" aria-controls="colorCollapse">
+    Colors
+  </a>
+<div class="collapse" id="colorCollapse">
+  <div class="card card-body">
+    <ul class="list-group" *ngFor="let color of colors">
+      <li
+        class="list-group-item"
+        (click)="setCurrentColor(color)"
+        routerLink="/cars/brand/{{ color.colorId }}"
+        [class]="getCurrentColorClass(color)"
+        type="button"
+      >
+      <input
+      class="form-check-input me-1"
+      type="checkbox"
+      value=""
+      id="firstCheckbox"
+    />
+      <label class="form-check-label" for="firstCheckbox">{{color.colorName}}</label>
+    </ul>
+  </div>
+</div> 
+</ul>-->

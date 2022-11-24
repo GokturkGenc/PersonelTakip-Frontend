@@ -1,0 +1,45 @@
+<ul class="list-group" *ngFor="let brand of brands">
+  <li
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{ brand.brandId }}"
+    [class]="getCurrentBrandClass(brand)"
+    type="button"
+  >
+    <a>{{ brand.brandName }}</a>
+  </li>
+</ul>
+<!-- 
+<p>
+  <a class="btn btn-primary col-md-12" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"
+  >
+  Brands
+</a>
+</p>
+<div class="row">
+  <div class="col">
+    <div class="collapse multi-collapse col-md-12" id="multiCollapseExample1">
+        <ul class="list-group" *ngFor="let brand of brands" >
+          <li
+          routerLink="/cars/brand/{{ brand.brandId }}"
+            [class]="getCurrentBrandClass(brand)"
+            type="button"
+            style="margin-left: 10px;"
+          >
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="setCurrentBrand(brand)">
+            <label class="form-check-label" for="flexCheckDefault">
+              {{ brand.brandName }}
+            </label>
+          </div>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="collapse multi-collapse" id="multiCollapseExample2">
+      <div class="card card-body">
+        2222
+      </div>
+    </div>
+  </div>
+</div> -->

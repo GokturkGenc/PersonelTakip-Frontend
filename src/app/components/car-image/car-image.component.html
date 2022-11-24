@@ -1,0 +1,23 @@
+<div id="carImagesSlider" class="carousel carousel-dark slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button [ngClass]="getActiveImageClass(carImage)" *ngFor="let carImage of carImages; let i = index" type="button" 
+      data-bs-target="#carouselExampleDark" [attr.data-bs-slide-to]="i" aria-label="Slide 2"></button>
+  </div>
+
+  <div class="carousel-inner border"  style="background-color: rgb(240, 240, 240)">
+    <div class="carousel-item" style="border:10px;width:445px;height: 400px;"  [ngClass]="getActiveImageClass(carImage)"
+      *ngFor="let carImage of carImages">
+      <img style="max-width: 399px; max-height: 399px;margin:20px;" resize="300*300" 
+      class="card-img" 
+      src="{{ imageUrl }}{{ carImage.imagePath }}" alt="image.imagePath" />
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carImagesSlider" style="background-color: white;" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carImagesSlider" style="background-color: white;" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

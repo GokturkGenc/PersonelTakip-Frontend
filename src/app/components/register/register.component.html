@@ -1,0 +1,42 @@
+<body class="text-center">
+    <main class="form-signin">
+        <div>
+        <form [formGroup]="registerForm">
+            <h2 class="h3 mb-3 fw-normal fs-4">Sign Up</h2>
+
+            <div class="form-floating" style="margin:20px">
+                <input formControlName="firstName" type="text" class="form-control" id="firstName"
+                    placeholder="First name" />
+                <label for="firstName">First Name</label>
+            </div>
+            <div class="form-floating" style="margin:20px">
+                <input formControlName="lastName" type="text" class="form-control" id="lastName"
+                    placeholder="Last name" />
+                <label for="lastName">Last Name</label>
+            </div>
+            <div class="form-floating" style="margin:20px">
+                <input formControlName="email" type="email" class="form-control" id="email"
+                    placeholder="name@example.com" />
+                <label for="floatingInput">E-posta</label>
+            </div>
+            <div class="form-floating" style="margin:20px">
+                <input formControlName="password" type="password" class="form-control" id="password"
+                    placeholder="Password" />
+                <label for="floatingPassword">Parola</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" value="remember-me" /> Beni hatırla
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" style="margin:20px" (click)="register()">
+                Register
+            </button>
+            <button class="w-100 btn btn-lg btn-primary" style="margin:20px" routerLink="/users/login">
+                Already have an account ? 
+            </button>
+        </form>
+    </div>
+    </main>
+</body>
