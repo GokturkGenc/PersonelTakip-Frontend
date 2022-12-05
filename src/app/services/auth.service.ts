@@ -71,7 +71,6 @@ export class AuthService {
         let claimInfo = Object.keys(decodedToken).filter(x => x.endsWith('/role'))[0]
         let roles = decodedToken[claimInfo];
         console.log("role:", roles)
-
         let emailInfo = decodedToken.email;
 
         this.user = {
@@ -79,7 +78,7 @@ export class AuthService {
           firstName: firstName,
           lastName: lastName,
           email: emailInfo,
-          roles: roles,
+          roles: roles
 
         }
       }

@@ -1,0 +1,61 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="carUpdateForm">
+                <div class="mb-2">
+                    <label>Enter Car Id</label>
+                    <div class="form-group">
+                        <input type="number" id="carId" formControlName="carId" class="form-control"
+                            placeholder="Enter Car Id " />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="brand">Brand name</label>
+                    <div class="form-group">
+                        <div class="form">
+                                <select class="form-control" id="brandId" formControlName="brandId" aria-label="">
+                                    <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}
+                                    </option>
+                                </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="colorId">Color name</label>
+                    <div class="form-group">
+                        <div class="form">
+                            <select class="form-control" id="colorId" formControlName="colorId" aria-label=""
+                                aria-placeholder="Color">
+                                <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="dailyPrice">Price</label>
+                    <div class="form-group">
+                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"
+                            placeholder="Enter daily price" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="description">Description</label>
+                    <div class="form-group">
+                        <input type="text" id="description" formControlName="description" class="form-control"
+                            placeholder="Description" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="modelYear">Model Year</label>
+                    <div class="form-group">
+                        <input type="datetime" id="modelYear" formControlName="modelYear" class="form-control"
+                            placeholder="Model year" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <button class="btn btn-fill btn-success" (click)="update()">Update</button>
+    </div>
+</div>

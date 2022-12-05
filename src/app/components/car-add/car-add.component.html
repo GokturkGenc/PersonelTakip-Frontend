@@ -4,34 +4,66 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">Add a car</h5>
+                    <h3 class="title" style="font-size: 30px;margin:2px">Add a car</h3>
                 </div>
                 <div class="card-body">
                     <form [formGroup]="carAddForm">
-                        <div class="mb-2">
-                            <label for="brandId">Brand name</label>
-                            <div class="form-group">
-                                <div class="form">
-                                    <select class="form-control" id="brandId" formControlName="brandId" aria-label="">
-                                        <option [value]="0">Select a brand</option>
-                                        <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="brandId">Brand name</label>
+                                <div class="form-group">
+                                    <select class="form-control" id="brandId" formControlName="brandId">
+                                        <option [value]="brand.brandId" *ngFor="let brand of brands">{{brand.brandName}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="brandAddForm">
+                                    <label for="brandName">Marka adı</label>
+                                    <div class="form-group input-group">
+                                        <button class="btn btn-outline-success" type="button" id="button-addon1"
+                                            (click)="addBrand()"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20  " fill="currentColor" class="bi bi-check-circle-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg> Add</button>
+                                        <input type="text" id="brandName" formControlName="brandName"
+                                            class="form-control" placeholder="Enter brand name here.">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="mb-2">
-                            <label for="brandId">Color name</label>
-                            <div class="form-group">
-                                <div class="form">
-                                    <select class="form-control" id="colorId" formControlName="colorId" aria-label="">
-                                        <option [value]="0">Select a color</option>
-                                        <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="colorId">Color name</label>
+                                <div class="form-group">
+                                    <select class="form-control" id="colorId" formControlName="colorId">
+                                        <option [value]="color.colorId" *ngFor="let color of colors">{{color.colorName}}
                                         </option>
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="colorAddForm">
+                                    <label for="colorName">Color Name</label>
+                                    <div class="form-group input-group">
+                                        <button class="btn btn-outline-success" type="button" id="button-addon1"
+                                            (click)="addColor()"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                                height="20  " fill="currentColor" class="bi bi-check-circle-fill"
+                                                viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg> Add</button>
+                                        <input type="text" id="colorName" formControlName="colorName"
+                                            class="form-control" placeholder="Enter color name here.">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
+                        
                         <div class="mb-2">
                             <label for="dailyPrice">Price</label>
                             <div class="form-group">
@@ -56,7 +88,12 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-fill btn-success" (click)="add()">Add</button>
+                    <button class="btn btn-fill btn-success" (click)="add()"><svg xmlns="http://www.w3.org/2000/svg"
+                            width="20" height="20  " fill="currentColor" class="bi bi-check-circle-fill"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg> Add</button>
                 </div>
             </div>
         </div>

@@ -5,25 +5,20 @@
   <div class="col-md-10">
 
     <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Find a vehicle</label>
+      <h2 for="exampleFormControlInput1" class="form-label">Find a vehicle</h2>
       <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText"
-        placeholder="Type the vehicle you want to find" />
+        placeholder="Type the vehicle you want to find"> 
     </div>
-
-    <div *ngIf="filterText" class="alert alert-primary">
-      Searched for {{ filterText }}.
-    </div>
-
     <div class="row">
       <div class="col-md-4">
-        <select [(ngModel)]="brandFilter" class="form-select" aria-label="marka seç">
-          <option value="0">Marka seç</option>
+        <select [(ngModel)]="brandFilter" class="form-select" style="margin-left: 10px;" aria-label="marka seç">
+          <option value="0">Filter a brand</option>
           <option [value]="brand.brandId" *ngFor="let brand of brands">{{brand.brandName}}</option>
         </select>
       </div>
       <div class="col-md-4">
         <select [(ngModel)]="colorFilter" class="form-select" aria-label="Default select example">
-          <option value="0">Renk seç</option>
+          <option value="0">Filter a color</option>
           <option [value]="color.colorId" *ngFor="let color of colors">{{color.colorName}}</option>
         </select>
       </div>
@@ -41,6 +36,8 @@
       </div>
     </div>
 
+    <a class="bd-links-span-all mt-1 mb-3 mx-4 border-top"></a>
+
     <div class="row" style="margin-left:1px; margin-right:1px;">
       <div class="card" style="width: 32.33%; margin-left: 1%; margin-bottom: 1%"
         *ngFor="let car of cars | filterPipe: filterText">
@@ -57,9 +54,9 @@
           </p>
           <p>{{ car.dailyPrice }}</p>
           <p>{{ car.dailyPrice | vatAdded: 18 | currency }} with taxes!</p>
-          <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 10%">
-            <button type="button" routerLink="/cars/car/{{ car.carId }}" class="btn btn-primary">
-              İncele
+          <div class="d-grid gap-2 mx-auto" style="margin-top: 10%">
+            <button class="btn btn-primary" type="button" routerLink="/cars/car/{{ car.carId }}" >
+              View this vehicle
             </button>
           </div>
         </div>

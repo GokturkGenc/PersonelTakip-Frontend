@@ -28,6 +28,15 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(this.apiUrl+ 'add',car)
   }
 
+  delete(car:Car):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "delete"
+    return this.httpClient.request<ResponseModel>("DELETE",newPath,{body: car})
+  }
+
+  update(car:Car):Observable<ResponseModel>{
+    return this.httpClient.put<ResponseModel>(this.apiUrl+'update',car)
+  }
+
   getCarDetailsById(carId:number): Observable<SingleResponseModel<CarDetail>>{
     let newPath = this.apiUrl +'getcardetail?carId='+ carId;
     return this.httpClient.get<SingleResponseModel<CarDetail>>(newPath)

@@ -25,7 +25,7 @@ export class ColorComponent implements OnInit {
   getColors() {
     this.colorService.getColors().subscribe((response) => {
       this.colors = response.data;
-      this.dataLoaded = true;
+      this.colors.sort((a,b)=>a.colorName<b.colorName? -1:a.colorName>b.colorName?1:0)
     });
   }
 

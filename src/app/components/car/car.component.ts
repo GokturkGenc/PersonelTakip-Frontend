@@ -9,6 +9,7 @@ import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 import { ColorService } from 'src/app/services/color.service';
 import { Color } from 'src/app/models/color';
+import { BrandComponent } from '../brand/brand.component';
 
 @Component({
   selector: 'app-car',
@@ -60,11 +61,13 @@ export class CarComponent implements OnInit {
   getBrands() {
     this.brandService.getBrands().subscribe(response => {
       this.brands = response.data
+      this.brands.sort((a,b)=>a.brandName<b.brandName? -1:a.brandName>b.brandName?1:0)
     })
   }
   getColors(){
     this.colorService.getColors().subscribe(response => {
       this.colors = response.data
+      this.colors.sort((a,b)=>a.colorName<b.colorName? -1:a.colorName>b.colorName?1:0)
     })
   }
   

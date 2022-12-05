@@ -6,7 +6,7 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CarDetail } from 'src/app/models/carDetail';
 import { Rental } from 'src/app/models/rental';
@@ -25,6 +25,7 @@ export class RentalAddComponent implements OnInit {
   rental: RentalDetails;
   minDate = new Date();
   rentalModel: Rental;
+
   constructor(
     private formBuilder: FormBuilder,
     private carService: CarService,
@@ -36,7 +37,7 @@ export class RentalAddComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.rentalModel)
+    //console.log(this.rentalModel)
     this.createRentalAddForm();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
@@ -51,6 +52,16 @@ export class RentalAddComponent implements OnInit {
     });
   }
 
+  getDatesInRange(startDate:any, endDate:any) {
+    const date = new Date(startDate.getTime());
+    const dates = [];  
+    while (date <= endDate) {
+      dates.push(new Date(date).getTime());
+      date.setDate(date.getDate() + 1);
+    }
+    return dates;
+  }
+
   createRentalAddForm() {
     this.rentalAddForm = this.formBuilder.group({
       //carId: ['', Validators.required],
@@ -60,39 +71,57 @@ export class RentalAddComponent implements OnInit {
     });
   }
 
-  /////////////////////
-  // getRentalDetailByCarId() {
-  //   this.rentalService.getRentalDetailByCarId(this.car.carId).subscribe((response) => {
-  //     const countOfRent = response.data.length
-  //     console.log(countOfRent)
-  //     if (countOfRent > 0) {
-  //       for (let i = 0; i < countOfRent; i++) {
-  //         const rentDate1 = new Date(response.data[i].rentDate).getTime()
-  //         const returnDate1 = new Date(response.data[i].returnDate).getTime()
-  //         const rentDates = [rentDate1, returnDate1]
-  //         console.log(rentDates)
-  //       }
-  //     }
-  //   });
-  // }
+  getRentDatesByCar() {
+    this.rentalService.getRentalDetailByCarId(this.car.carId).subscribe((response) => {
+      const countOfRent = response.data.length
+      console.log(countOfRent)
+      //console.log(this.rentalAddForm.value.rentDate)
+      if (countOfRent > 0) {
+        for (let i = 0; i < countOfRent; i++) {
+          let rentDate1 = new Date(response.data[i].rentDate)
+          let returnDate1 = new Date(response.data[i].returnDate)
+          let rntDate = this.rentalAddForm.value.rentDate
+          let rtrnDate = this.rentalAddForm.value.returnDate
+          /////////
+          if((this.getDatesInRange(this.rentalAddForm.value.rentDate,this.rentalAddForm.value.returnDate).includes(this.getDatesInRange(rentDate1,rentDate1)[i])
+           ||this.getDatesInRange(this.rentalAddForm.value.rentDate,this.rentalAddForm.value.returnDate).includes(this.getDatesInRange(rentDate1,returnDate1)[i]))
+          )
+          { 
+            console.log("range içerisi  " + this.getDatesInRange(rentDate1,returnDate1))
+            console.log("benim tarihler  " + this.getDatesInRange(this.rentalAddForm.value.rentDate,this.rentalAddForm.value.returnDate))
+            console.log("içeriyor") //// hata ver, belirlenen aralıklarda kiralanmış bilgisi söyle
+          } if(this.getDatesInRange(rentDate1,returnDate1).includes(rntDate.getTime())
+          ||this.getDatesInRange(rentDate1,returnDate1).includes(rtrnDate.getTime())) {
+            console.log("range içerisi  " + this.getDatesInRange(rentDate1,returnDate1))
+            console.log("benim tarihler  " + this.getDatesInRange(this.rentalAddForm.value.rentDate,this.rentalAddForm.value.returnDate))
+            console.log("İÇERMİYOR !!!!!!") 
+            //this.rentTheCar() 
+          } else {
+            for (let i =0;i<countOfRent;i++){
+              console.log("else in içerisi")
+              if(i = countOfRent){  /////// burası çözülecek
+                this.rentTheCar() 
+              }
+              
+            }
+            
+          }
+          /////////
+          // const rentDates = [rentDate1, returnDate1]
+          // console.log(rentDates)
+        }
+      }
+    });
+  }
 
-  // rentTheCar() {
-  //   if (this.rentalAddForm.valid) {
-  //     this.rentalService.getRentalDetailByCarId(this.car.carId).subscribe((response) => {
-  //       const countOfRent = response.data.length
-  //       if (countOfRent > 0) {
-  //         for (let i = 0; i < countOfRent; i++) {
-  //           const rentDate1 = response.data[i].rentDate
-  //           const returnDate1 = response.data[i].returnDate
-  //           const rentDates = [rentDate1, returnDate1]
-  //         }
-  //       }
-  //       // this.toastrService.success(response.message, 'Başarılı');
-  //       // this.sendData();
-  //       // this.router.navigate(["/cars/payment/car/", this.car.carId])
-  //     },)
-  //   }
-  // }
+  rentTheCar(){
+    if(this.rentalAddForm.valid){
+      this.toastrService.success('Başarılı');
+      this.sendData();
+      this.router.navigate(["cars/payment/car/", this.car.carId])
+    }
+  }
+  
 
   isCarRented() {
     if (this.rentalAddForm.valid) {

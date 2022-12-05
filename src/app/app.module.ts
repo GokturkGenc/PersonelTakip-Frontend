@@ -35,6 +35,8 @@ import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { BrandListComponent } from './components/brand-list/brand-list.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -63,6 +65,8 @@ export function tokenGetter() {
     PaymentComponent,
     CartSummaryComponent,
     UserDetailComponent,
+    CarUpdateComponent,
+    BrandListComponent,
   ],
   imports: [BrowserModule,
     AppRoutingModule,
