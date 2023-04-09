@@ -77,10 +77,10 @@ export class EmployeeAddComponent implements OnInit {
   }
 
   add() {
-    if (!this.employeeAddForm.valid) {
+    if (!this.employeeAddForm.valid)  {
       let employeeModel = Object.assign({}, this.employeeAddForm.value)
       this.employeeService.add(employeeModel).subscribe(response => {
-        this.toastrService.success(response.message, "Personel ekleme başarılı")
+        this.toastrService.success(response.message, "Personel ekleme başarılı ")
       }, responseError => {
         if (responseError.error.Errors.length > 0) {
           for (let i = 0; i < responseError.error.Errors.length; i++) {
