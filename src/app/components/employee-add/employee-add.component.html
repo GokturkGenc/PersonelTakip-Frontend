@@ -1,0 +1,183 @@
+<div class="content">
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="title" style="font-size: 30px; margin: 2px">
+                        Yeni Çalışan Ekle
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="employeeAddForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="firstName">İsim</label>
+                                <div class="form-group">
+                                    <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                                        placeholder="İsim Giriniz" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lastName">Soyisim</label>
+                                <div class="form-group">
+                                    <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                                        placeholder="Soyisim Giriniz" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="unitId">Birim adı</label>
+                                <div class="form-group">
+                                    <select class="form-control" id="unitId" formControlName="unitId" type="number">
+                                        <option [value]="unit.unitId" *ngFor="let unit of units" >
+                                            {{ unit.unitName }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="unitAddForm">
+                                    <label for="unitName">Birim Adı</label>
+                                    <div class="form-group input-group">
+                                        <button class="btn btn-outline-success" type="button" id="button-addon1"
+                                            (click)="addUnit()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20  "
+                                                fill="currentUnit" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            Ekle
+                                        </button>
+                                        <input type="text" id="unitName" formControlName="unitName" class="form-control"
+                                            placeholder="Birim adını giriniz" />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 5px;">
+                            <div class="col-md-6">
+                                <label for="taskId">Görev seç</label>
+                                <div class="form-group">
+                                    <select class="form-control" id="taskId" formControlName="taskId" type="number">
+                                        <option [value]="task.taskId" *ngFor="let task of tasks">
+                                            {{ task.taskName }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="taskAddForm">
+                                    <label for="taskName">Görev adı</label>
+                                    <div class="form-group input-group">
+                                        <button class="btn btn-outline-success" type="button" id="button-addon1"
+                                            (click)="addTask()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20  "
+                                                fill="currentUnit" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            Ekle
+                                        </button>
+                                        <input type="text" id="taskName" formControlName="taskName" class="form-control"
+                                            placeholder="Enter task name here." />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 5px;">
+                            <div class="col-md-6">
+                                <label for="branchId">Şube seç</label>
+                                <div class="form-group" >
+                                    <select class="form-control" id="branchId" formControlName="branchId" type="number">
+                                        <option [value]="branch.branchId" *ngFor="let branch of branches">
+                                            {{ branch.branchCityName }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <form [formGroup]="branchAddForm">
+                                    <label for="branchCityName">Şube Adı</label>
+                                    <div class="form-group input-group">
+                                        <button class="btn btn-outline-success" type="button" id="button-addon1"
+                                            (click)="addBranch()">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20  "
+                                                fill="currentUnit" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                                            </svg>
+                                            Ekle
+                                        </button>
+                                        <input type="text" id="branchCityName" formControlName="branchCityName" class="form-control"
+                                            placeholder="Enter branch name here." />
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="mb-2">
+                            <label for="nationalId">TC No</label>
+                            <div class="form-group">
+                                <input type="text" id="nationalId" formControlName="nationalId" class="form-control"
+                                    placeholder="TC No Giriniz" />
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="birthPlace">Doğum Yeri</label>
+                            <div class="form-group">
+                                <input type="text" id="birthPlace" formControlName="birthPlace" class="form-control"
+                                    placeholder="Doğum Yeri Giriniz" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate">Doğum Tarihi</label>
+                            <input type="date" class="form-control" id="birthDate" formControlName="birthDate" name="birthDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="dateOfEntry">İşe giriş tarihi</label>
+                            <input type="date" class="form-control" id="dateOfEntry" formControlName="dateOfEntry" name="dateOfEntry">
+                        </div>
+                        <div class="mb-2">
+                            <label for="adresses">Adres</label>
+                            <div class="form-group">
+                                <input type="text" id="adresses" formControlName="adresses" class="form-control"
+                                    placeholder="Adres Giriniz" />
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label for="contactNumbers">İletişim Numarası</label>
+                            <div class="form-group">
+                                <input type="text" id="contactNumbers" formControlName="contactNumbers" class="form-control"
+                                    placeholder="Telefon Numarası Giriniz" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="educationStatus" class="form-label">Eğitim Durumu</label>
+                            <select class="form-select" id="educationStatus">
+                              <option selected>Lütfen bir seçim yapın</option>
+                              <option>Lise</option>
+                              <option>Üniversite</option>
+                              <option>Yüksek Lisans</option>
+                              <option>Doktora</option>
+                            </select>
+                          </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-fill btn-success" (click)="add()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20  " fill="currentUnit"
+                            class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </svg>
+                        Ekle
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

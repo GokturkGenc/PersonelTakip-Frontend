@@ -1,0 +1,46 @@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Şube ismi güncelle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="content d-flex justify-content-center">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-12">
+                            <div class="p-fluid p-formgrid p-grid">
+                                <form [formGroup]="branchUpdateForm">
+                                    <div class="mb-3">
+                                        <h2 for="branchId" class="form-label">Değiştirmek istediğiniz şubeyi seçin</h2>
+                                        <div class="form-group">
+                                            <div class="form">
+                                                <select class="form-control" id="branchId" formControlName="branchId" aria-label="">
+                                                    <option *ngFor="let branch of branches" [value]="branch.branchId">{{branch.branchCityName}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h2 for="branchCityName" class="form-label">Yeni Şube Adı</h2>
+                                        <input type="text" class="form-control" id="branchCityName" formControlName="branchCityName" pInputText>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="update()">Değişiklikleri Kaydet</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

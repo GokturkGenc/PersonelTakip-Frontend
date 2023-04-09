@@ -1,0 +1,46 @@
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Görev ismi güncelle</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="content d-flex justify-content-center">
+                    <div class="row justify-content-md-center">
+                        <div class="col-md-12">
+                            <div class="p-fluid p-formgrid p-grid">
+                                <form [formGroup]="taskUpdateForm">
+                                    <div class="mb-3">
+                                        <h2 for="taskId" class="form-label">İsmini değiştirmek istediğiniz görevi seçin</h2>
+                                        <div class="form-group">
+                                            <div class="form">
+                                                <select class="form-control" id="taskId" formControlName="taskId" aria-label="">
+                                                    <option *ngFor="let task of tasks" [value]="task.taskId">{{task.taskName}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h2 for="taskName" class="form-label">Yeni Görev Adı</h2>
+                                        <input type="text" class="form-control" id="taskName" formControlName="taskName" pInputText>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="update()">Değişiklikleri Kaydet</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

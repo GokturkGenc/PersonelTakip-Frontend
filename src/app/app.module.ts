@@ -11,32 +11,26 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CarComponent } from './components/car/car.component';
-import { BrandComponent } from './components/brand/brand.component';
-import { ColorComponent } from './components/color/color.component';
-import { NaviComponent } from './components/navi/navi.component';
-import { CustomerComponent } from './components/customer/customer.component';
-import { UserComponent } from './components/user/user.component';
-import { CarDetailComponent } from './components/car-detail/car-detail.component';
-import { CarImageComponent } from './components/car-image/car-image.component';
-import { VatAddedPipe } from './pipes/vat-added.pipe';
-import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 
 import { ToastrModule } from 'ngx-toastr';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
-import { RentalAddComponent } from './components/rental-add/rental-add.component';
-import { CarAddComponent } from './components/car-add/car-add.component';
-import { BrandAddComponent } from './components/brand-add/brand-add.component';
-import { ColorAddComponent } from './components/color-add/color-add.component';
-import { RegisterComponent } from './components/register/register.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { LoginComponent } from './components/login/login.component';
-import { PaymentComponent } from './components/payment/payment.component';
-import { CartSummaryComponent } from './components/cart-summary/cart-summary.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { CarUpdateComponent } from './components/car-update/car-update.component';
-import { BrandListComponent } from './components/brand-list/brand-list.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeAddComponent } from './components/employee-add/employee-add.component';
+import { EmployeeUpdateComponent } from './components/employee-update/employee-update.component';
+import { EmployeeDetailComponent } from './components/employee-detail/employee-detail.component';
+import { TaskComponent } from './components/task/task.component';
+import { TaskAddComponent } from './components/task-add/task-add.component';
+import { TaskUpdateComponent } from './components/task-update/task-update.component';
+import { UnitComponent } from './components/unit/unit.component';
+import { UnitAddComponent } from './components/unit-add/unit-add.component';
+import { UnitUpdateComponent } from './components/unit-update/unit-update.component';
+import { BranchComponent } from './components/branch/branch.component';
+import { BranchAddComponent } from './components/branch-add/branch-add.component';
+import { BranchUpdateComponent } from './components/branch-update/branch-update.component';
+import { MainPageComponent } from './components/main-page/main-page.component';
+import { NaviComponent } from './components/navi/navi.component';
+import { EmployeeWorkersComponent } from './components/employee-workers/employee-workers.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -45,28 +39,22 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    CarComponent,
-    BrandComponent,
-    ColorComponent,
     NaviComponent,
-    CustomerComponent,
-    UserComponent,
-    CarImageComponent,
-    CarDetailComponent,
-    VatAddedPipe,
-    FilterPipePipe,
-    SideBarComponent,
-    RentalAddComponent,
-    CarAddComponent,
-    BrandAddComponent,
-    ColorAddComponent,
-    RegisterComponent,
-    LoginComponent,
-    PaymentComponent,
-    CartSummaryComponent,
-    UserDetailComponent,
-    CarUpdateComponent,
-    BrandListComponent,
+    EmployeeComponent,
+    EmployeeAddComponent,
+    EmployeeUpdateComponent,
+    EmployeeDetailComponent,
+    TaskComponent,
+    TaskAddComponent,
+    TaskUpdateComponent,
+    UnitComponent,
+    UnitAddComponent,
+    UnitUpdateComponent,
+    BranchComponent,
+    BranchAddComponent,
+    BranchUpdateComponent,
+    MainPageComponent,
+    EmployeeWorkersComponent
   ],
   imports: [BrowserModule,
     AppRoutingModule,
@@ -81,8 +69,7 @@ export function tokenGetter() {
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatExpansionModule
-    
+    MatExpansionModule    
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AuthInterceptor,multi:true}],
   bootstrap: [AppComponent],

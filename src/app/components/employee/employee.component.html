@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+      <h1>Tüm personeller</h1>
+      <h4>Bu sayfada işte çalışan ve ayrılmış personeller görüntülenmektedir.</h4>
+      <button class="btn btn-primary" routerLink="/employees/add">Personel Ekle</button>
+      <button class="btn btn-primary" routerLink="/employees/stillworkers">Çalışan Personeller</button></div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>İncele</th>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>TC No</th>
+        <th>Doğum Tarihi</th>
+        <th>Adres</th>
+        <th>Telefon</th>
+        <th>Giriş Tarihi</th>
+        <th>Çıkış Tarihi</th>
+        <th>Görev</th>
+        <th>Birim</th>
+        <th>Şube</th>
+        <th>Öğrenim</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let employee of employees">
+      <tr>
+        <button type="button" class="btn btn-outline-primary" routerLink="/employees/employee/{{employee.employeeId}}">İncele</button>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName | uppercase }}</td>
+        <td>{{ employee.nationalId }}</td>
+        <td>{{ employee.birthDate }}</td>
+        <td>{{ employee.adresses }}</td>
+        <td>{{ employee.contactNumbers }}</td>
+        <td>{{ employee.dateOfEntry }}</td>
+        <td>{{ employee.leavingDate }}</td>
+        <td>{{ employee.taskName }}</td>
+        <td>{{ employee.unitName }}</td>
+        <td>{{ employee.branchCityName }}</td>
+        <td>{{ employee.educationStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+

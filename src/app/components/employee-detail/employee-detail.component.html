@@ -1,0 +1,61 @@
+<h1>Personel Kimliği</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th>Personel ID</th>
+        <th>İsim</th>
+        <th>Soyisim</th>
+        <th>TC No</th>
+        <th>Doğum Tarihi</th>
+        <th>Adres</th>
+        <th>Telefon</th>
+        <th>Giriş Tarihi</th>
+        <th>Çıkış Tarihi</th>
+        <th>Görev</th>
+        <th>Birim</th>
+        <th>Şube</th>
+        <th>Öğrenim</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ employee.employeeId }}</td>
+        <td>{{ employee.firstName }}</td>
+        <td>{{ employee.lastName | uppercase }}</td>
+        <td>{{ employee.nationalId }}</td>
+        <td>{{ employee.birthDate }}</td>
+        <td>{{ employee.adresses }}</td>
+        <td>{{ employee.contactNumbers }}</td>
+        <td>{{ employee.dateOfEntry }}</td>
+        <td>{{ employee.leavingDate }}</td>
+        <td>{{ employee.taskName }}</td>
+        <td>{{ employee.unitName }}</td>
+        <td>{{ employee.branchCityName }}</td>
+        <td>{{ employee.educationStatus }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+<!-- Button trigger modal -->
+<div class="d-grid gap-2 d-md-flex justify-content-md-center mt-4" >
+<button type="button" data-bs-toggle="modal" class="btn btn-primary me-md-2 mb-2 mb-md-0" data-bs-target="#exampleModal">
+    Personel Bilgilerini Güncelle
+  </button>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <app-employee-update></app-employee-update>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>

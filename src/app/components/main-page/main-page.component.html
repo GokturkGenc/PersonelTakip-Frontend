@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="text-center">
+      <h1>HOŞGELDİNİZ</h1>
+      <button class="btn btn-primary me-md-2 mb-2 mb-md-0" type="button"
+      routerLink="/employees">Personeller</button>
+    <button class="btn btn-primary me-md-2 mb-2 mb-md-0" type="button" routerLink="/tasks">Görevler</button>
+    <button class="btn btn-primary me-md-2 mb-2 mb-md-0" type="button" routerLink="/units">Birimler</button>
+    <button class="btn btn-primary me-md-2 mb-2 mb-md-0" type="button" routerLink="/branches">Şubeler</button>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px">
+    <div class="text-center">
+      <h2>Hızlı Arama</h2>
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <div class="">
+          <select [(ngModel)]="unitFilter" class="form-select" aria-label="marka seç">
+            <option value="0">Birim seçin</option>
+            <option [value]="unit.unitId" *ngFor="let unit of units">{{unit.unitName}}</option>
+          </select>
+        </div>
+        <div class="">
+          <select [(ngModel)]="taskFilter" class="form-select" aria-label="Default select example">
+            <option value="0">Görev Seçin</option>
+            <option [value]="task.taskId" *ngFor="let task of tasks">{{task.taskName}}</option>
+          </select>
+        </div>
+        </div>
+        <div>
+          <div class=" d-grid gap-2 col-6 mx-auto" style="margin-top: 10px;">
+            <div *ngIf="taskFilter&&unitFilter"><button routerLink="/employees/task/{{taskFilter}}/unit/{{unitFilter}}"
+                style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-primary"
+                type="button"> Filter</button></div>
+            <div *ngIf="!taskFilter&&unitFilter"><button routerLink="/employees/unit/{{unitFilter}}"
+                style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-primary"
+                type="button"> Filter </button></div>
+            <div *ngIf="taskFilter&&!unitFilter"><button routerLink="/employees/task/{{taskFilter}}"
+                style="width: 100%;font-display:rgb(255, 255, 255);" class=" btn btn-primary"
+                type="button"> Filter </button></div>
+    
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

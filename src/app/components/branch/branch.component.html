@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6" style="margin-top: 20px;">
+        <button class="btn col-md-12" style="background-color: rgb(0, 94, 148);color:aliceblue" type="button"
+        data-bs-toggle="collapse" data-bs-target="#branchCollapse" aria-expanded="true" aria-controls="branchCollapse">
+        Şubeler
+    </button>
+    <div class="collapse" id="branchCollapse" class="btn col-md-12">
+        <ul class="list-group" *ngFor="let branch of branches" style="margin-top: 4px;">
+            <li (click)="setCurrentBranch(branch)" routerLink="/employees/branch/{{ branch.branchId }}" [class]="getCurrentBranchClass(branch)"
+                type="button">
+                <a>{{ branch.branchCityName }}</a>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <div class="col-md-6">
+        <form [formGroup]="branchAddForm">
+            <label for="branchName">Şube Adı</label>
+            <div class="form-group input-group">
+                <button class="btn btn-outline-success" type="button" id="button-addon1"
+                    (click)="addBranch()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20  "
+                        fill="currentBranch" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg>
+                    Ekle
+                </button>
+                <input type="text" id="branchCityName" formControlName="branchCityName" class="form-control"
+                    placeholder="Şube adını giriniz" />
+            </div>
+        </form>
+        <button type="button" class="btn btn-success"data-bs-toggle="modal" style="margin-top: 10px;" data-bs-target="#exampleModal">Bir Şube Adını Güncelle</button>
+        <div><app-branch-update></app-branch-update></div>
+    </div>
+    
+</div>

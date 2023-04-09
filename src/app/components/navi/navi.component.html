@@ -4,42 +4,26 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="#">Ana Sayfa</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link active" aria-current="page" routerLink="/employees">Personeller</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/tasks">Görevler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/units">Birimler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/branches">Şubeler</a>
         </li>
       </ul>
-      <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#">GK Rent A Car</a>
+      <a class="navbar-brand position-absolute top-50 start-50 translate-middle" href="#">Personel Takip Sistemi</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-      <div class="row offset-8 col-md-2">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <!-- <div class="form-check form-switch" style="margin-top: 10px;">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-          </div> -->
-          <button *ngIf="!isAuthenticated()" type="button" class="rounded float-end btn btn-primary"
-            routerLink="users/login">
-            Login
-          </button>
-          <button *ngIf="!isAuthenticated()" type="button" style="margin-right: 10%;" class="rounded float-end btn btn-success"
-            routerLink="users/register">
-            Register
-          </button>
-        </div>
-        <div *ngIf="isAuthenticated()" class="btn-group" style="margin-left: -15px">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-            aria-expanded="false">{{user?.firstName}}</button>
-          <ul class="dropdown-menu w-100 text-center">
-            <li class="btn dropdown-item" routerLink="/user/profile/{{user.userId}}"> 
-              Profil Düzenle
-            </li>
-            <li class="btn dropdown-item" (click)="logout()">Çıkış yap</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 </nav>

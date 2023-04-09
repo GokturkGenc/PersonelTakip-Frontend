@@ -1,0 +1,204 @@
+<!-- <div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="employeeUpdateForm">
+                <div class="mb-2">
+                    <label for="EmployeeId">EmployeeId</label>
+                    <div class="form-group">
+                        <input type="text" id="EmployeeId" formControlName="EmployeeId" class="form-control"
+                            placeholder="ID" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="firstName">İsim</label>
+                    <div class="form-group">
+                        <input type="text" id="firstName" formControlName="firstName" class="form-control"
+                            placeholder="İsim" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="lastName">Soyisim</label>
+                    <div class="form-group">
+                        <input type="text" id="lastName" formControlName="lastName" class="form-control"
+                            placeholder="Soyisim" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="nationalId">TC Kimlik No</label>
+                    <div class="form-group">
+                        <input type="text" id="nationalId" formControlName="nationalId" class="form-control"
+                            placeholder="TC No" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="birthPlace">Doğum Yeri</label>
+                    <div class="form-group">
+                        <input type="text" id="birthPlace" formControlName="birthPlace" class="form-control"
+                            placeholder="Doğum Yeri" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="birthDate">Doğum Tarihi</label>
+                    <div class="form-group">
+                        <input type="date" id="birthDate" formControlName="birthDate" class="form-control"
+                            placeholder="Doğum Tarihi" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="adresses">Adres</label>
+                    <div class="form-group">
+                        <input type="text" id="adresses" formControlName="adresses" class="form-control"
+                            placeholder="Adres" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="contactNumbers">İletişim Numarası</label>
+                    <div class="form-group">
+                        <input type="text" id="contactNumbers" formControlName="contactNumbers" class="form-control"
+                            placeholder="İletişim Numarası" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="educationStatus">Eğitim Durumu</label>
+                    <select class="form-select" id="educationStatus">
+                        <option selected>Lütfen bir seçim yapın</option>
+                        <option>Lise</option>
+                        <option>Üniversite</option>
+                        <option>Yüksek Lisans</option>
+                        <option>Doktora</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="dateOfEntry">İşe giriş tarihi</label>
+                    <div class="form-group">
+                        <input type="date" id="dateOfEntry" formControlName="dateOfEntry" class="form-control"
+                            placeholder="İşe giriş tarihi" />
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="leavingDate">İşten çıkış tarihi</label>
+                    <div class="form-group">
+                        <input type="date" id="leavingDate" formControlName="leavingDate" class="form-control"
+                            placeholder="İşten çıkış tarihi" />
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label for="branch">Branch name</label>
+                    <div class="form-group">
+                        <div class="form">
+                            <select class="form-control" id="branchId" formControlName="branchId" aria-label="">
+                                <option *ngFor="let branch of branches" [value]="branch.branchId">
+                                    {{ branch.branchCityName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="unitId">Unit name</label>
+                    <div class="form-group">
+                        <div class="form">
+                            <select class="form-control" id="unitId" formControlName="unitId" aria-label=""
+                                aria-placeholder="Unit">
+                                <option *ngFor="let unit of units" [value]="unit.unitId">
+                                    {{ unit.unitName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <label for="taskId">Task name</label>
+                    <div class="form-group">
+                        <div class="form">
+                            <select class="form-control" id="taskId" formControlName="taskId" aria-label=""
+                                aria-placeholder="Task">
+                                <option *ngFor="let task of tasks" [value]="task.taskId">
+                                    {{ task.taskName }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <button type="button" class="btn btn-secondary col-md-6" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-fill btn-success col-md-6" (click)="update()">Update</button>
+    </div>
+</div> -->
+
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <form [formGroup]="employeeUpdateForm"> 
+                <label for="employeeId">ID</label>
+                <input type="number" class="form-control" id="employeeId" formControlName="employeeId" [(ngModel)]="employee.employeeId">
+
+                <label for="firstName">Ad</label>
+                <input type="text" class="form-control" id="firstName" formControlName="firstName" [(ngModel)]="employee.firstName" required>
+
+                <label for="lastName">Soyad</label>
+                <input type="text" class="form-control" id="lastName" formControlName="lastName" [(ngModel)]="employee.lastName" required>
+
+                <label for="nationalId">TC Kimlik NO</label>
+                <input type="text" class="form-control" id="nationalId" formControlName="nationalId" [(ngModel)]="employee.nationalId" required>
+
+                <label for="birthDate">Doğum Tarihi (Varsayılan:{{employee.birthDate}})</label>
+                <input type="date" class="form-control" id="birthDate" formControlName="birthDate" [(ngModel)]="employee.birthDate" required>
+
+                <label for="birthPlace">Doğum Yeri</label>
+                <input type="text" class="form-control" id="birthPlace" formControlName="birthPlace" [(ngModel)]="employee.birthPlace" required>
+
+                <label for="adresses">Adres</label>
+                <input type="text" class="form-control" id="adresses" formControlName="adresses" [(ngModel)]="employee.adresses" required>
+
+                <label for="contactNumbers">İletişim Numarası</label>
+                <input type="text" class="form-control" id="contactNumbers" formControlName="contactNumbers" [(ngModel)]="employee.contactNumbers" required>
+
+                <label for="educationStatus">Eğitim Derecesi</label>
+                <input type="text" class="form-control" id="educationStatus" formControlName="educationStatus" [(ngModel)]="employee.educationStatus" required>
+
+                <label for="dateOfEntry">Giriş Tarihi  (Varsayılan:{{employee.dateOfEntry}})</label>
+                <input type="date" class="form-control" id="dateOfEntry" formControlName="dateOfEntry" [(ngModel)]="employee.dateOfEntry" required>
+
+                <label for="leavingDate">Çıkış Tarihi  (Varsayılan:{{employee.leavingDate}})</label>
+                <input type="date" class="form-control" id="leavingDate" formControlName="leavingDate" [(ngModel)]="employee.leavingDate">
+
+                <label for="branchId">Şube Adı</label>
+                <div class="form">
+                    <select class="form-control" id="branchId" formControlName="branchId" formControlName="branchId" [(ngModel)]="employee.branchId"
+                        aria-placeholder="Branch">
+                        <option *ngFor="let branch of branches" [value]="branch.branchId">
+                            {{ branch.branchCityName }}
+                        </option>
+                    </select>
+                </div>
+                
+                <label for="unitId">Birim Adı</label>
+                <div class="form">
+                    <select class="form-control" id="unitId" formControlName="unitId" formControlName="unitId" [(ngModel)]="employee.unitId"
+                        aria-placeholder="Unit">
+                        <option *ngFor="let unit of units" [value]="unit.unitId">
+                            {{ unit.unitName }}
+                        </option>
+                    </select>
+                </div>
+
+                <label for="taskId">Görev Adı</label>
+                <div class="form">
+                    <select class="form-control" id="taskId" formControlName="taskId" formControlName="taskId" [(ngModel)]="employee.taskId"
+                        aria-placeholder="Task">
+                        <option *ngFor="let task of tasks" [value]="task.taskId">
+                            {{ task.taskName }}
+                        </option>
+                    </select>
+                </div>
+            </form>
+        </div>
+        <button type="button" class="btn btn-secondary col-md-6" data-bs-dismiss="modal">Close</button>
+        <button class="btn btn-fill btn-success col-md-6" (click)="update()">Update</button>
+    </div>
+</div>
